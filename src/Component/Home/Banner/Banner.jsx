@@ -17,7 +17,7 @@ const Banner = () => {
           Find Your Destination
         </h2>
       </div>
-      <div className="text-center pt-64 ">
+      <div className="text-center pt-44">
         <input
           type="text"
           placeholder="Search here"

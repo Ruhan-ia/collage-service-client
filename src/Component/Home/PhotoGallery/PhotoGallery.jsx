@@ -27,8 +27,8 @@ const PhotoGallery = () => {
   }, []);
 
   return (
-    <div className="photo-gallery mt-20">
-        <h2 className='text-center text-green-500 font-bold text-5xl py-10'>Our Gallery</h2>
+    <div className="photo-gallery ">
+        <h2 className='pt-15 text-center text-green-500 font-bold text-5xl py-10'>Our Gallery</h2>
       {photoData.map((photoURL, index) => (
         <div
           key={index}

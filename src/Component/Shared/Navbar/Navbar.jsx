@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext)
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
     const nabItem = (
         <>
@@ -10,11 +19,14 @@ const Navbar = () => {
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link>Collage</Link>
+                <Link to='/collages'>Collages</Link>
                 
               </li>
               <li>
-                <a>Item 3</a>
+                <Link to='/admission'>Admission</Link>
+              </li>
+              <li>
+                <Link to='/myCollage'>My Collage</Link>
               </li>
         </>
     );
@@ -46,7 +58,7 @@ const Navbar = () => {
                 {nabItem}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">Choose Your Dream</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -54,10 +66,30 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        {user && 
+            <div className="me-8 text-4xl">
+              <div className="avatar">
+                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src="https://i.ibb.co/p1pyJP1/chef-5.jpg" />
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <div>
+          {user ? 
+            <button onClick={handleLogOut} className="btn me-5">
+              Log Out
+            </button>
+          : 
+            <Link to="/login" className="btn me-5">
+              <button className="btn">Login</button>
+            </Link>
+          }
         </div>
       </div>
     </div>
+    
   );
 };
 
